@@ -15,7 +15,7 @@ two.appendTo(container)
 
 // add a square
 const shape = two.makeRectangle(250, 250, 100, 100)
-shape.fill = "#f9bc31"
+shape.fill = "#ebec8d"
 shape.noStroke()
 shape.rotation = Math.PI * 0.25
 
