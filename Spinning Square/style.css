@@ -1,11 +1,10 @@
 body {
-    background-color: #ffffff;
+    background-color: #ffe8b4;
 }
 
 section {
     width: 500px;
     height: 500px;
-    background-color: red;
 
     position: fixed;
     top: 50%;
