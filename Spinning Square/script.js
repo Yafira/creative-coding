@@ -20,5 +20,17 @@ shape.noStroke()
 shape.rotation = Math.PI * 0.25
 
 
+// listen for any update, any frame 60fps
+two.bind("update", function () {
+    // shape.rotation = shape.rotation + 0.05
+    shape.rotation += 0.05
+})
+
+
 two.play()
+
+
+
+
+
 
