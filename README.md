@@ -11,8 +11,11 @@
 
 
 ## Tools:
+
+### Two.js
 -  Two.js, a Javascript tool for creating and manipulating shapes to design your own fun animations.
 - Two.js is a two-dimensional drawing api geared towards modern web browsers. It is renderer agnostic enabling the same api to draw in multiple contexts: svg, canvas, and webgl.
+- **Overview:** Focus on Vector Shapes, Scenegraph, Animation Loop, and SVG Interpreter
 
 
 
