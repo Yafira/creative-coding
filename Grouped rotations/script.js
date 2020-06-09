@@ -19,8 +19,8 @@ const shapes = []
 for (let i = 0; i < numberOfShapes; i = i + 1) {
     const angle = fullRotation * i / numberOfShapes
 
-    const x = 250 + plotRadius * Math.cos(angle)
-    const y = 250 + plotRadius * Math.sin(angle)
+    const x = plotRadius * Math.cos(angle)
+    const y = plotRadius * Math.sin(angle)
 
     const shape = two.makeRectangle(x, y, 50, 50)
     shape.noStroke()
@@ -31,8 +31,14 @@ for (let i = 0; i < numberOfShapes; i = i + 1) {
     shapes.push(shape)
 }
 
+const group = two.makeGroup(shapes)
+group.translation.set(250, 250)
+
 
 two.bind("update", function () {
+    group.rotation += 0.005
+
+
     shapes.forEach(shape => {
         shape.rotation += 0.025
     })
