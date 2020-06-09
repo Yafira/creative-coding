@@ -16,14 +16,13 @@ const plotRadius = 150
 
 
 for (let i = 0; i < numberOfShapes; i = i + 1) {
-    const x = i * 30 + 30
-    const y = 250
-    const shape = two.makeRectangle(x, y, 20, 20)
+    const angle = fullRotation * i / numberOfShapes
+    const x = 250 + plotRadius * Math.cos(angle)
+    const y = 250 + plotRadius * Math.sin(angle)
+    const shape = two.makeRectangle(x, y, 50, 50)
     shape.noStroke()
     shape.fill = "#e5adf5"
 }
-
-
 
 
 two.play()
