@@ -10,6 +10,7 @@ const params = {
 const two = new Two(params)
 two.appendTo(container)
 
+ // Variation 1: Squares into circle
 // const numberOfShapes = 12
 
 // Variation 2: Stick version
@@ -29,12 +30,14 @@ for (let i = 0; i < numberOfShapes; i = i + 1) {
     const x = plotRadius * Math.cos(angle)
     const y = plotRadius * Math.sin(angle)
 
+
+    // Variation 1: Squares into circle
     // const shape = two.makeRectangle(x, y, 50, 50)
 
-    // variation 2: Stick version
+    // Variation 2: Stick version
     // const shape = two.makeRectangle(x, y, 150, 10)
 
-    // variation 3: Grow and shrink scale
+    // Variation 3: Grow and shrink scale
     const shape = two.makeRectangle(x, y, 150, 10)
 
     shape.noStroke()
