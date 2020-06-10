@@ -17,7 +17,13 @@ const shapes = []
 for (let i = 0; i < numberOfShapes; i++) { 
   const size = (numberOfShapes - i) * shapeIncr
   const shape = two.makeRectangle(250, 250, size, size)
-  shape.fill = "#b583ee"
+  
+  if (i % 2 === 0) {
+    shape.fill = "#dccaf1"
+  } else {
+    shape.fill = "#b583ee"
+  }
+  
   shape.noStroke()
 
   shapes.push(shape)
@@ -25,7 +31,11 @@ for (let i = 0; i < numberOfShapes; i++) {
 
 two.bind("update", function () {
   // draw
+  shapes.forEach(shape => {
+    shape.rotation += 0.005
+  })
 })
+
 
 two.play()
 
