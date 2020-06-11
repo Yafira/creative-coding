@@ -44,8 +44,16 @@ two.bind("update", function (frameCount) {
     // const aStart = aDelay * i
     // const aEnd = aDelay * (numberOfShapes - i)
 
+
     const u = mapAndClamp(t, aStart, 1 - aEnd, 0, 1)
     shape.rotation = easeInOutCubic(u) * halfRotation 
+
+    // Variation 3: using modulo to change rotations
+    // if (i % 2 === 0) {
+    // shape.rotation = easeInOutCubic(u) * halfRotation 
+    // } else {
+    //   shape.rotation = -1 * easeInOutCubic(u) * halfRotation 
+    // }
 
   })
 
