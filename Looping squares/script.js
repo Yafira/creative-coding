@@ -36,7 +36,7 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach(shape => {
-    shape.rotation = easeInOutCubic(t) * fullRotation 
+    shape.rotation = easeInOutCubic(t) * halfRotation 
 
   })
 
