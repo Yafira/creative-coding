@@ -9,6 +9,7 @@ const two = new Two(params)
 two.appendTo(container)
 
 // config for animation
+const loopDuration = 60 * 4
 const numberOfShapes = 40
 const shapeIncr = 20
 const shapes = []
@@ -31,9 +32,14 @@ for (let i = 0; i < numberOfShapes; i++) {
 
 two.bind("update", function () {
   // draw
+  const currentFrame = frameCount % loopDuration
+  const t = currentFrame / loopDuration
+
   shapes.forEach(shape => {
-    shape.rotation += 0.005
+    shape.rotation = t * halfRotation // full loop
+
   })
+
 })
 
 
