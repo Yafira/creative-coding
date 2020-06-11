@@ -9,7 +9,7 @@ const two = new Two(params)
 two.appendTo(container)
 
 // config for animation
-const loopDuration = 60 * 4
+const loopDuration = 60 * 8
 const numberOfShapes = 40
 const shapeIncr = 20
 const shapes = []
@@ -36,7 +36,7 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach(shape => {
-    shape.rotation = t * halfRotation // full loop
+    shape.rotation = easeInOutCubic(t) * fullRotation 
 
   })
 
