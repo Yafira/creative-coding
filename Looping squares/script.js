@@ -30,7 +30,7 @@ for (let i = 0; i < numberOfShapes; i++) {
   shapes.push(shape)
 }
 
-two.bind("update", function () {
+two.bind("update", function (frameCount) {
   // draw
   const currentFrame = frameCount % loopDuration
   const t = currentFrame / loopDuration
