@@ -40,6 +40,10 @@ two.bind("update", function (frameCount) {
     const aStart = aDelay * (numberOfShapes - i)
     const aEnd = aDelay * i
 
+    // Variation 2: switching ordering
+    // const aStart = aDelay * i
+    // const aEnd = aDelay * (numberOfShapes - i)
+
     const u = mapAndClamp(t, aStart, 1 - aEnd, 0, 1)
     shape.rotation = easeInOutCubic(u) * halfRotation 
 
