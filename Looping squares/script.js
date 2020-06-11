@@ -12,6 +12,7 @@ two.appendTo(container)
 const loopDuration = 60 * 8
 const numberOfShapes = 40
 const shapeIncr = 20
+const aDelay = 1 / 120
 const shapes = []
 
 // make shapes
@@ -35,8 +36,12 @@ two.bind("update", function (frameCount) {
   const currentFrame = frameCount % loopDuration
   const t = currentFrame / loopDuration
 
-  shapes.forEach(shape => {
-    shape.rotation = easeInOutCubic(t) * halfRotation 
+  shapes.forEach((shape, i) => {
+    const aStart = aDelay * (numberOfShapes - i)
+    const aEnd = aDelay * i
+
+    const u = mapAndClamp(t, aStart, 1 - aEnd, 0, 1)
+    shape.rotation = easeInOutCubic(u) * halfRotation 
 
   })
 
