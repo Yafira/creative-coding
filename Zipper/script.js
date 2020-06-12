@@ -49,7 +49,9 @@ two.bind("update", function (frameCount) {
     }
       
 
-    shape.width = shapeMin + shapeDiff * easeInOutCubic(u) // non-linear easing
+    shape.width = shapeMin + shapeDiff * easeInOutCubic(u)
+    // Variation B: translation
+    shape.translation.x = 750 * easeInOutCubic(u)
   })
 
 })
