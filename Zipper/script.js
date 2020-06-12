@@ -26,7 +26,7 @@ for (let i = 0; i < numberOfShapes; i++) {
   const shape = two.makeRectangle(x, y, shapeMin, 10)
   shape.fill = "#5645d3"
   shape.noStroke()
-  
+
 
   shapes.push(shape)
 }
@@ -39,7 +39,16 @@ two.bind("update", function (frameCount) {
   shapes.forEach((shape, i) => {
     const aStart = 0.01 * (numberOfShapes - i)
     const aEnd = 0.01 * i
-    const u = mapAndClamp(t, aStart, 1 - aEnd, 0, 1)
+
+    let u = 0
+
+    if (t < 0.5) {
+      u = mapAndClamp(t, aStart, 0.5 - aEnd, 0, 1)
+    } else {
+      u = mapAndClamp(t, 0.5 + aStart, 1 - aEnd, 1, 0)
+    }
+      
+
     shape.width = shapeMin + shapeDiff * easeInOutCubic(u) // non-linear easing
   })
 
