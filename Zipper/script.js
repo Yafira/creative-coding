@@ -36,7 +36,7 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach((shape, i) => {
-    shape.width = shapeMin + shapeDiff * t
+    shape.width = shapeMin + shapeDiff * easeInOutCubic(t)
   })
 })
 
