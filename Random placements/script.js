@@ -95,5 +95,33 @@ two.bind("update", function (frameCount) {
 
 })
 
+// Variation E: Change colors on click
+let currentColor = 0
+const bgColors = ["#f0d2f8", "#dccaf1", "#ffe8b4", "#e5fa7f", "#87c9ff", "#6efab6"]
+const shapeColors = ["#e5adf5", "#b583ee", "#f8bc30", "#bfdb40", "#4b95d1", "#4bd190"]
+
+
+document.addEventListener("click", function () {
+  currentColor += 1
+  currentColor = currentColor % bgColors.length
+
+
+  const bodyTag = document.querySelector("body")
+  bodyTag.style.backgroundColor = bgColors[currentColor]
+
+  shapes.forEach((shape, i) => {
+    shape.fill = shapeColors[currentColor]
+  })
+})
+
+
+
+
+
+
+
+
+
+
 two.play()
 
