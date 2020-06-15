@@ -34,7 +34,6 @@ for (let i = 0; i < numberOfShapes; i++) {
     ey: ey,
     sr: sr,
     er: er
-
   }
 
   shapes.push(shape)
