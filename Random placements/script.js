@@ -25,13 +25,13 @@ for (let i = 0; i < numberOfShapes; i++) {
   // const ss = 1 
 
   // Variation C: into a circle
-  const plotRadius = 200
-  const angle = fullRotation * i / numberOfShapes
-  const ex = 250 + plotRadius * Math.cos(angle)
-  const ey = 250 + plotRadius * Math.sin(angle)
+  // const plotRadius = 200
+  // const angle = fullRotation * i / numberOfShapes
+  // const ex = 250 + plotRadius * Math.cos(angle)
+  // const ey = 250 + plotRadius * Math.sin(angle)
 
-  // const ex = randomNumber(50, 450)
-  // const ey = randomNumber(50, 450)
+  const ex = randomNumber(50, 450)
+  const ey = randomNumber(50, 450)
   const er = randomNumber(-2 * fullRotation, 2 * fullRotation)
   // Variation B: scaling
   // const es = randomNumber(1, 4) 
@@ -60,6 +60,15 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach((shape, i) => {
+    // Variation D: reset the randomness on loop
+    if (currentFrame === 0) {
+      shape.data.ex = randomNumber(50, 450)
+      shape.data.ey = randomNumber(50, 450)
+      shape.data.er = randomNumber(-2 * fullRotation, 2 * fullRotation)
+    }
+
+
+
     const aStart = aDelay * (numberOfShapes - i)
     const aEnd = aDelay * i
 
