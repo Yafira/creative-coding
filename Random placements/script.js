@@ -12,6 +12,7 @@ two.appendTo(container)
 const numberOfShapes = 25
 const shapes = []
 const loopDuration = 6 * 60
+const aDelay = 0.0025
 
 // make shapes
 for (let i = 0; i < numberOfShapes; i++) {
@@ -45,17 +46,22 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach((shape, i) => {
-    let u =0
+    const aStart = aDelay * (numberOfShapes - i)
+    const aEnd = aDelay * i
+
+    let u = 0
 
     if (t < 0.5) {
-      u = mapAndClamp(t, 0, 0.5, 0, 1)
+      u = mapAndClamp(t, aStart, 0.5 - aEnd, 0, 1)
     } else {
-      u = mapAndClamp(t, 0.5, 1, 1, 0)
+      u = mapAndClamp(t, 0.5 + aStart, 1 - aEnd, 1, 0)
     }
 
-    const x = mapAndClamp(u, 0, 1, shape.data.sx, shape.data.ex)
-    const y = mapAndClamp(u, 0, 1, shape.data.sy, shape.data.ey)
-    const r = mapAndClamp(u, 0, 1, shape.data.sr, shape.data.er)
+    const cu = easeInOutCubic(u) // linear to cubic
+
+    const x = mapAndClamp(cu, 0, 1, shape.data.sx, shape.data.ex)
+    const y = mapAndClamp(cu, 0, 1, shape.data.sy, shape.data.ey)
+    const r = mapAndClamp(cu, 0, 1, shape.data.sr, shape.data.er)
     shape.translation.x = x
     shape.translation.y = y
     shape.rotation = r
