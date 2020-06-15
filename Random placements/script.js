@@ -20,11 +20,21 @@ for (let i = 0; i < numberOfShapes; i++) {
   const sx = size * i + 10
   const sy = 250
   const sr = 0
-  const ss = 1 // Variation B: scaling
-  const ex = randomNumber(50, 450)
-  const ey = randomNumber(50, 450)
+
+  // Variation B: scaling
+  // const ss = 1 
+
+  // Variation C: into a circle
+  const plotRadius = 200
+  const angle = fullRotation * i / numberOfShapes
+  const ex = 250 + plotRadius * Math.cos(angle)
+  const ey = 250 + plotRadius * Math.sin(angle)
+
+  // const ex = randomNumber(50, 450)
+  // const ey = randomNumber(50, 450)
   const er = randomNumber(-2 * fullRotation, 2 * fullRotation)
-  const es = randomNumber(1, 4) // Variation B: scaling
+  // Variation B: scaling
+  // const es = randomNumber(1, 4) 
 
 
   const shape = two.makeRectangle(sx, sy, size, size)
@@ -33,12 +43,12 @@ for (let i = 0; i < numberOfShapes; i++) {
   shape.data = {
     sx: sx, 
     sy: sy,
+    sr: sr,
+    // ss: ss, // Variation B: scaling
     ex: ex,
     ey: ey,
-    sr: sr,
     er: er,
-    ss: ss, // Variation B: scaling
-    es: es // Variation B: scaling 
+    // es: es // Variation B: scaling 
   }
 
   shapes.push(shape)
@@ -67,11 +77,11 @@ two.bind("update", function (frameCount) {
     const y = mapAndClamp(cu, 0, 1, shape.data.sy, shape.data.ey)
     const r = mapAndClamp(cu, 0, 1, shape.data.sr, shape.data.er)
     // Variation B: scaling
-    const s = mapAndClamp(cu, 0, 1, shape.data.ss, shape.data.es)
+    // const s = mapAndClamp(cu, 0, 1, shape.data.ss, shape.data.es)
     shape.translation.x = x
     shape.translation.y = y
     shape.rotation = r
-    shape.scale = s // Variation B: scaling 
+    // shape.scale = s // Variation B: scaling 
   })
 
 })
