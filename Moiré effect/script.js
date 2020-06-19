@@ -32,11 +32,11 @@ for (let i = 0; i < numberOfShapes; i++) {
 
   const shape = two.makeRectangle(x, y, startWidth, 10)
   shape.noStroke()
-  shape.fill = "#5644d3"
+  shape.fill = "#000000"
 
 
   if (i >= 25) {
-    shape.fill = "#99e6e0"
+    shape.fill = "#D3D3D3"
   }
 
 
