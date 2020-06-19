@@ -54,12 +54,18 @@ two.bind("update", function (frameCount) {
 
     if (t < 0.25) {
       // sequence 1, width grows
+      const u = mapAndClamp(t, 0, 0.25, 0, 1)
+      w = mapAndClamp(u, 0, 1, startWidth, endWidth)
     } else if (t < 0.5) {
       // sequence 2, rotate the rectangle
+      w = endWidth
     } else if (t < 0.75) {
       // sequence 3, width shrinks
+      const u = mapAndClamp(t, 0.5, 0.75, 0, 1)
+      w = mapAndClamp(u, 0, 1, endWidth, startWidth)
     } else {
-      // sequence 4, rotate back to normal 
+      // sequence 4, rotate back to normal
+      w = startWidth
     }
 
 
