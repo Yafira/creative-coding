@@ -17,6 +17,7 @@ const diffWidth = endWidth - startWidth
 const startRotation = 0
 const endRotation = fullRotation * 6 / 360
 const loopDuration = 12 * 60
+const aDelay = 0.001
 
 // make shapes
 for (let i = 0; i < numberOfShapes; i++) {
@@ -51,28 +52,35 @@ two.bind("update", function (frameCount) {
   shapes.forEach((shape, i) => {
     let r = startRotation
     let w = startWidth
+    let aStart = aDelay * i
+    let aEnd = aDelay * (numberOfShapes - i)
+
+    if (i >= 25) {
+      aStart = aDelay * (numberOfShapes - i)
+      aEnd = aDelay * i
+    }
 
     if (t < 0.25) {
       // sequence 1, width grows
-      const u = mapAndClamp(t, 0, 0.25, 0, 1)
+      const u = mapAndClamp(t, 0 + aStart, 0.25 - aEnd, 0, 1)
       const cu = easeInOutCubic(u)
       w = mapAndClamp(cu, 0, 1, startWidth, endWidth)
       r = startRotation
     } else if (t < 0.5) {
       // sequence 2, rotate the rectangle
-      const u = mapAndClamp(t, 0.25, 0.5, 0, 1)
+      const u = mapAndClamp(t, 0.25 + aStart, 0.5 - aEnd, 0, 1)
       const cu = easeInOutCubic(u)
       w = endWidth
       r = mapAndClamp(cu, 0, 1, startRotation, endRotation)
     } else if (t < 0.75) {
       // sequence 3, width shrinks
-      const u = mapAndClamp(t, 0.5, 0.75, 0, 1)
+      const u = mapAndClamp(t, 0.5 + aStart, 0.75 - aEnd, 0, 1)
       const cu = easeInOutCubic(u)
       w = mapAndClamp(cu, 0, 1, endWidth, startWidth)
       r = endRotation
     } else {
       // sequence 4, rotate back to normal
-      const u = mapAndClamp(t, 0.75, t, 0, 1)
+      const u = mapAndClamp(t, 0.75 + aStart, 1 - aEnd, 0, 1)
       const cu = easeInOutCubic(u)
       w = startWidth
       r = mapAndClamp(cu, 0, 1, endRotation, startRotation)
