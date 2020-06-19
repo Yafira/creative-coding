@@ -49,7 +49,24 @@ two.bind("update", function (frameCount) {
   const t = currentFrame / loopDuration
 
   shapes.forEach((shape, i) => {
-    shape.width = startWidth + t * diffWidth
+    let r = startRotation
+    let w = startWidth
+
+    if (t < 0.25) {
+      // sequence 1, width grows
+    } else if (t < 0.5) {
+      // sequence 2, rotate the rectangle
+    } else if (t < 0.75) {
+      // sequence 3, width shrinks
+    } else {
+      // sequence 4, rotate back to normal 
+    }
+
+
+
+
+    shape.width = w
+    shape.rotation = r
   })
 })
 
