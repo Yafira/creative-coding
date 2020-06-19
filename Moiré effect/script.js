@@ -55,23 +55,27 @@ two.bind("update", function (frameCount) {
     if (t < 0.25) {
       // sequence 1, width grows
       const u = mapAndClamp(t, 0, 0.25, 0, 1)
-      w = mapAndClamp(u, 0, 1, startWidth, endWidth)
+      const cu = easeInOutCubic(u)
+      w = mapAndClamp(cu, 0, 1, startWidth, endWidth)
       r = startRotation
     } else if (t < 0.5) {
       // sequence 2, rotate the rectangle
       const u = mapAndClamp(t, 0.25, 0.5, 0, 1)
+      const cu = easeInOutCubic(u)
       w = endWidth
-      r = mapAndClamp(u, 0, 1, startRotation, endRotation)
+      r = mapAndClamp(cu, 0, 1, startRotation, endRotation)
     } else if (t < 0.75) {
       // sequence 3, width shrinks
       const u = mapAndClamp(t, 0.5, 0.75, 0, 1)
-      w = mapAndClamp(u, 0, 1, endWidth, startWidth)
+      const cu = easeInOutCubic(u)
+      w = mapAndClamp(cu, 0, 1, endWidth, startWidth)
       r = endRotation
     } else {
       // sequence 4, rotate back to normal
       const u = mapAndClamp(t, 0.75, t, 0, 1)
+      const cu = easeInOutCubic(u)
       w = startWidth
-      r = mapAndClamp(u, 0, 1, endRotation, startRotation)
+      r = mapAndClamp(cu, 0, 1, endRotation, startRotation)
     }
 
 
