@@ -79,6 +79,10 @@ two.bind("update", function (frameCount) {
 
     shape.width = w
     shape.rotation = r
+
+    if (i >= 25) {
+      shape.rotation = r * -1
+    }
   })
 })
 
